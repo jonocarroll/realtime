@@ -11,7 +11,7 @@ knitr::opts_chunk$set(echo = TRUE)
 ```
 
 ```{r, eval = F}
-library(magrittr)
+# library(magrittr)
 library(realtime)
 
 ## plot with a theme_grey() feel
@@ -57,6 +57,39 @@ app <- list(
 ## and run the server
 runServer("0.0.0.0", 9454, app, 250)
 
+
+library(httpuv)
+library(jsonlite)
+#library(devtools)
+#install("/Users/yan/Desktop/REALTIME/realtime")
+library(realtime)
+library(Rbitcoin) # github
+
+realtime(w = 600, h = 500) %>%
+    theme_grey() %>%
+    add_data_stream('ws://localhost:9454/') 
+
+options(Rbitcoin.antiddos.sec = 0.1)
+
+app <- list(
+  call = function(req) {
+    stop("call is not implemented. Something is wrong if you see this")
+  },
+  onWSOpen = function(ws) {
+    id = 1
+    while(TRUE){
+      x = as.numeric(fromBTC(1, antiddos = 0.1))-5700 %>% round(5)
+      #x=3
+      print(x)
+      ws$send(toJSON(list(x = x)))
+      Sys.sleep(0.1)
+      id = id+1
+    }
+  }
+)
+
+#liveplot()
+runServer("0.0.0.0", 9454, app, 250)
 ```
 
 TODO:
