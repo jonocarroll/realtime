@@ -159,7 +159,9 @@ get_section <- function(sketch, verb){
     return(sketch$x$section)
   }
 
-  if(verb %in% c("createCanvas", "background", "noLoop", "setup")) {
+  if (verb %in% c("pre")) {
+    "pre"
+  } else if (verb %in% c("createCanvas", "background", "noLoop", "setup")) {
     "setup"
   } else if(verb %in% c("js")) {
     "post"

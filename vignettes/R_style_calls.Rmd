@@ -1,0 +1,67 @@
+---
+title: "R-Style Calls To `realtime()`"
+author: "Jonathan Carroll"
+date: "26/10/2017"
+output:
+  html_document: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r, eval = F}
+library(magrittr)
+library(realtime)
+
+## plot with a theme_grey() feel
+## also has a floating rectangle to 
+## demonstrate that the sketch is 
+## chained correctly
+realtime(w = 600, h = 500) %>%
+    theme_grey() %>%
+    fill("#000000") %>%
+    rect(100, 100, 100, 100) 
+
+## a theme_bw option
+realtime(w = 600, h = 500) %>%
+    theme_bw() %>%
+    fill("#000000") %>%
+    rect(100, 100, 100, 100)
+
+## link to a stream coming from a websocket
+realtime(w = 600, h = 500) %>%
+    theme_grey() %>%
+    add_data_stream('ws://localhost:9454/') ## this would be neater if it was the *first* part of the chain
+
+## for example, create a websocket of random data
+library(httpuv)
+library(jsonlite)
+
+app <- list(
+  call = function(req) {
+    stop("call is not implemented. Something is wrong if you see this")
+  },
+  onWSOpen = function(ws) {
+    id = 1
+    while(TRUE){
+      x = rnorm(1, 150, 50)
+      # print(x)
+      ws$send(toJSON(list(x = x)))
+      Sys.sleep(0.02)
+      id = id+1
+    }
+  }
+)
+
+## and run the server
+runServer("0.0.0.0", 9454, app, 250)
+
+```
+
+TODO:
+
+- gridlines should be part of backgroud; at the moment data sits *under* them
+- viewport needs to shift with data
+- scales need to shift with data
+- connect to an arbitrary source
