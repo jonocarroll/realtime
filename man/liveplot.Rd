@@ -4,11 +4,31 @@
 \alias{liveplot}
 \title{Live plot}
 \usage{
-liveplot(...)
+liveplot(x, wait = 5, width = NULL, height = NULL, padding = 0)
 }
 \arguments{
-\item{...}{TODO}
+\item{x}{\code{function} for fetching and process data.}
+
+\item{wait}{\code{numeric} number of seconds to wait between plot
+update.}
+
+\item{width}{\code{numeric} the width of the plot.}
+
+\item{height}{\code{numeric} the height of the plot.}
+
+\item{padding}{\code{numeric} the padding of the plot.}
 }
 \description{
 Create a live plot.
+}
+\details{
+The argument to \code{x} should be a function that returns
+  a \code{numeric} vector containing a \code{X} and \code{Y} coordinates
+  for plotting in real-time.
+}
+\examples{
+\donttest{
+liveplot(function() rnorm(10), 10)
+}
+
 }

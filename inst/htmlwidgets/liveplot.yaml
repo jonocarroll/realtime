@@ -1,6 +1,6 @@
 dependencies:
-  - name: p5
+  - name: liveplot
     version: 0.5.11
-    src: htmlwidgets/lib/p5
+    src: "htmlwidgets/lib/p5"
     script:
       - p5.min.js

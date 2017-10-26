@@ -1,7 +1,7 @@
 Package: realtime
 Type: Package
 Version: 0.0.0.1
-Title: Realtime data visaulization
+Title: Real time data visaulization
 Description: Create real time data visualizations.
 Authors@R: c(person(c('Richard','Beare'), email='Richard.Beare@monash.edu',
                     role=c('aut')),
