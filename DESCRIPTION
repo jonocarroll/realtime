@@ -38,6 +38,5 @@ Collate:
     'internal.R'
     'liveplot.R'
     'package.R'
-    'server.R'
     'shiny.R'
     'zzz.R'
