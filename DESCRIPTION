@@ -18,7 +18,8 @@ Imports:
     utils,
     methods,
     assertthat,
-    htmlwidgets
+    htmlwidgets,
+    p5
 Suggests:
     testthat,
     knitr,
@@ -32,9 +33,18 @@ BugReports: https://github.com/ropensci/realtime/issues
 VignetteBuilder: knitr
 RoxygenNote: 6.0.1
 Collate: 
+    'arbitrary_js.R'
+    'color.R'
+    'global.R'
     'internal.R'
+    'io.R'
+    'p5.R'
+    'p5_api.R'
     'package.R'
     'realtimeOutput.R'
     'renderRealtime.R'
+    'rendering.R'
+    'shape.R'
     'shiny.R'
+    'structure.R'
     'zzz.R'
