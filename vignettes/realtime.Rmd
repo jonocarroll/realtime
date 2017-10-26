@@ -1,0 +1,15 @@
+---
+title: "realtime"
+output:
+  rmarkdown::html_document:
+    toc: false
+    fig_caption: true
+    self_contained: yes
+fontsize: 11pt
+documentclass: article
+vignette: >
+  %\VignetteIndexEntry{realtime}
+  %\VignetteEngine{knitr::rmarkdown}
+---
+
+TODO

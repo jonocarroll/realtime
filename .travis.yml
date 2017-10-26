@@ -1,0 +1,51 @@
+# R for travis: see documentation at https://docs.travis-ci.com/user/languages/r
+
+language: r
+
+sudo: required
+
+dist: trusty
+
+warnings_are_errors: true
+
+r:
+  - release
+  - devel
+
+r_build_args: --no-build-vignettes
+
+os:
+  - linux
+  - osx
+
+matrix:
+  exclude:
+  - os: osx
+  - r: devel
+
+env:
+  global:
+    - _R_CHECK_FORCE_SUGGESTS_=FALSE
+
+apt_packages:
+  - curl
+  - qpdf
+
+before_install:
+  - echo "TRAVIS_OS_NAME = $TRAVIS_OS_NAME"
+  - echo "options(repos = c(CRAN='http://cran.rstudio.com'))" > ~/.Rprofile
+  - if [ "$TRAVIS_OS_NAME" == "linux" ]; then sudo apt-get --yes --force-yes update -qq; fi;
+  - if [ "$TRAVIS_OS_NAME" == "linux" ]; then sudo apt-get install -y; fi;
+
+r_packages:
+  - covr
+  - rmarkdown
+  - testthat
+
+after_success:
+  - Rscript -e 'covr::codecov()'
+
+notifications:
+  email:
+    on_success: change
+    on_failure: change

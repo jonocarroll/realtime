@@ -1,0 +1,37 @@
+Package: realtime
+Type: Package
+Version: 0.0.0.1
+Title: Realtime data visaulization
+Description: Create real time data visualizations.
+Authors@R: c(person(c('Richard','Beare'), email='Richard.Beare@monash.edu',
+                    role=c('aut')),
+             person(c('Jonathan', 'Carroll'), email='rpkg@jcarroll.com.au',
+                    role=c('aut','cre')),
+             person(c('Kim'), 'Fitter', email='kimfitter@yahoo.com'),
+             person(c('Charles','Gray'), email='c.gray@latrobe.edu.au',
+                    role=c('aut')),
+             person(c('Jeffrey', 'O'), 'Hanson',
+                    email='jeffrey.hanson@uqconnect.edu.au', role=c('aut')),
+             person(c('Yan','Holtz'), email='yan.holtz.data@gmail.com',
+                    role=c('aut')))
+Imports:
+    utils,
+    methods,
+    assertthat,
+    htmlwidgets
+Suggests:
+    testthat,
+    knitr,
+    rmarkdown
+Depends:
+    R(>= 3.3.2)
+License: GPL-3
+LazyData: true
+URL: https://github.com/ropensci/realtime
+BugReports: https://github.com/ropensci/realtime/issues
+VignetteBuilder: knitr
+RoxygenNote: 6.0.1
+Collate:
+    'internal.R'
+    'package.R'
+    'zzz.R'
