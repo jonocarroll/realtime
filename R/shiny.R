@@ -1,4 +1,4 @@
-#' @include include.R
+#' @include internal.R
 NULL
 
 #' Wrapper functions for \code{realtime} in \code{shiny}
@@ -15,7 +15,7 @@ NULL
 #'
 #' @param expr An expression that generates an HTML widget.
 #'
-#' @param env The environment in which to evaluate \code{expr|.
+#' @param env The environment in which to evaluate \code{expr}.
 #'
 #' @param quoted Is \code{expr} a quoted expression (with \code{quote()})?
 #'   This is useful if you want to save an expression in a variable.

@@ -1,7 +1,7 @@
-#' @include include.R
+#' @include internal.R
 NULL
 
-#' @includein realtimeshiny
+#' @rdname realtimeshiny
 #' @export
 renderRealtime <- function(expr, env = parent.frame(), quoted = FALSE) {
   stop("TODO")

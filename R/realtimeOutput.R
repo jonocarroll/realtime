@@ -1,7 +1,7 @@
-#' @include include.R
+#' @include internal.R
 NULL
 
-#' @includein realtimeshiny
+#' @rdname realtimeshiny
 #' @export
 realtimeOutput <- function(outputId, width = "100%", height = 400) {
   stop("TODO")
