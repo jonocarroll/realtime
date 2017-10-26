@@ -155,9 +155,7 @@ validCssUnit <- function(x){
 
 get_section <- function(sketch, verb){
     
-    print(verb)
   if(sketch$x$section != "sketch"){
-      print("exiting early")
     return(sketch$x$section)
   }
 
