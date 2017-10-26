@@ -4,7 +4,7 @@
 \alias{liveplot}
 \title{Live plot}
 \usage{
-liveplot(...)
+liveplot(message, width = 200, height = 0, elementId = NULL)
 }
 \arguments{
 \item{...}{TODO}

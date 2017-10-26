@@ -1,0 +1,7 @@
+# (uncomment to add a dependency)
+dependencies:
+  - name: p5
+    version: 1
+    src: htmlwidgets/p5
+    script:
+      - p5.min.js

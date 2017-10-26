@@ -6,7 +6,7 @@
 \alias{renderliveplot}
 \title{Wrapper functions for \code{liveplot} in \code{shiny}}
 \usage{
-liveplotOutput(outputId, width = "100\%", height = 400)
+liveplotOutput(outputId, width = "200px", height = "10px")
 
 renderliveplot(expr, env = parent.frame(), quoted = FALSE)
 }
