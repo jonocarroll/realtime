@@ -22,12 +22,22 @@ NULL
 #'
 #' @examples
 #' \donttest{
-#' realtime(function() rnorm(10), 10)
+#' realtime(function() rnorm(1), 10)
 #' }
 #'
 #' @export
 realtime <- function(x, wait = 5,  padding = 0, width = NULL, height = NULL,
                      elementId = NULL) {
+  # validate inputs
+  assertthat::assert_that(is.function(x), assertthat::is.scalar(x()),
+                          assertthat::is.scalar(padding),
+                          assertthat::is.count(width) || is.null(width),
+                          assertthat::is.count(height) || is.null(height),
+                          assertthat::is.string(elementId) ||
+                            is.null(elementId))
+  # set up R process to serve data
+  api(x)
+  # create html widget
   p <- htmlwidgets::createWidget(
     "realtime",
     structure(list(wait = wait)),

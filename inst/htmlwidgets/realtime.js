@@ -2,6 +2,13 @@ HTMLWidgets.widget({
   name: "realtime",
   type: "output",
   factory: function(el, width, height) {
+    /* initialize web socket */
+    var raw = 0;
+    var ws = new WebSocket("ws://0.0.0.0:9454");
+    ws.onmessage = function(msg) {raw = msg;};
+    window.addEventListener("beforeunload", function(e){
+      ws.send("close");
+    }, false);
     return {
       renderValue: function(x) {
         // set global constants
@@ -21,7 +28,10 @@ HTMLWidgets.widget({
 
             /* get new data from R */
             // generate random number between zero and one
-            var new_data = Math.random();
+            console.log(ws);
+            ws.send("ping");
+            var new_data = raw.data;
+            console.log(new_data);
 
             /* append new data to array */
             y_data.push(new_data);
@@ -35,7 +45,7 @@ HTMLWidgets.widget({
             var axis_max = curr_max + ((curr_max - curr_min) * 0.1);
 
             // set background
-            p.background('#ebebeb');
+            p.background("#ebebeb");
 
             /* set up plot */
             // create axes

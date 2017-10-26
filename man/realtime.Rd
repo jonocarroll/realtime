@@ -34,7 +34,7 @@ The argument to \code{x} should be a function that returns
 }
 \examples{
 \donttest{
-realtime(function() rnorm(10), 10)
+realtime(function() rnorm(1), 10)
 }
 
 }
