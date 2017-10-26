@@ -1,12 +1,13 @@
 var g = 50;  //margin
 var plot_width = 725 + g;
-var plot_height = 400;
+var plot_height = 100;
 var grid_width = 100;
   
 var ws = new WebSocket("ws://localhost:9454/");
 var data_stream = [];
   
 ws.onmessage = function(msg) {
+  console.log(msg);
   var data0 = JSON.parse(msg.data);
   data_stream.push(data0.x[0]);
 };  
