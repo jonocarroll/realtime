@@ -8,6 +8,18 @@ NULL
 #' @param ... TODO
 #'
 #' @export
-liveplot <- function(...) {
-  stop("TODO")
+liveplot <- function(message, width = 200, height = 0, elementId = NULL) {
+  
+  # forward options using x
+  x = list()
+  
+  # create widget
+  htmlwidgets::createWidget(
+    name = 'liveplot',
+    x,
+    width = width,
+    height = height,
+    package = 'realtime',
+    elementId = elementId
+  )
 }
