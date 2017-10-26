@@ -9,6 +9,5 @@ NULL
 #'
 #' @export
 liveplot <- function(...) {
-
-
+  stop("TODO")
 }
