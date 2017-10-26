@@ -9,10 +9,24 @@ HTMLWidgets.widget({
     window.addEventListener("beforeunload", function(e){
       ws.send("close");
     }, false);
+    // create function to extract data
+    var get_data = function() {
+      // ws.send("ping");
+      // raw.data;
+      return Math.random();
+    };
+    // set up timings
+    var d1 = Date.now();
+    var tmp = get_data();
+    var d2 = Date.now();
+    var difftime = (d2 - d1) + 1;
+
+    // create return htmlwidget factory
     return {
       renderValue: function(x) {
         // set global constants
         var y_data = [];
+        var x_labels = []
         var padding = 50;
         var start_x = 0;
         // define function to create plot
@@ -27,16 +41,18 @@ HTMLWidgets.widget({
             var gridwidth = 100;
 
             /* get new data from R */
-            // generate random number between zero and one
-            console.log(ws);
-            ws.send("ping");
-            var new_data = raw.data;
-            console.log(new_data);
+            var new_data = get_data();
 
+            /* get current time */
+            var raw_ds = new Date(Date.now());
+            var ds = raw_ds.toLocaleDateString() + "\n" +
+                     raw_ds.toLocaleTimeString();
             /* append new data to array */
             y_data.push(new_data);
-            if (y_data.length > (width - padding)) {
+            x_labels.push(ds);
+            if (y_data.length > ((width - padding) + 5)) {
               y_data.shift();
+              x_labels.shift();
               start_x = start_x + 1;
             }
             var curr_min = Math.min(...y_data);
@@ -86,7 +102,16 @@ HTMLWidgets.widget({
               lab = Math.round(lab * 100) / 100;
               p.text(lab, padding - 20, height - padding - i);
               // draw x labels
-              p.text(i + start_x, i + padding, height - padding + 20);
+              if (i > (x_labels.length - 1)) {
+                // estimate date/times for future data
+                raw_ds = new Date(d1 + (difftime * i));
+                ds = raw_ds.toLocaleDateString() + "\n" +
+                     raw_ds.toLocaleTimeString();
+                p.text(ds, i + padding, height - padding + 20);
+              } else {
+                // return actual date/times for data
+                p.text(x_labels[i], i + padding, height - padding + 20);
+              }
             }
 
             // draw the axis label
