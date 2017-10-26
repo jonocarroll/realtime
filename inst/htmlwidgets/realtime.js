@@ -47,6 +47,7 @@ HTMLWidgets.widget({
             var raw_ds = new Date(Date.now());
             var ds = raw_ds.toLocaleDateString() + "\n" +
                      raw_ds.toLocaleTimeString();
+
             /* append new data to array */
             y_data.push(new_data);
             x_labels.push(ds);
