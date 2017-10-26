@@ -33,7 +33,8 @@ VignetteBuilder: knitr
 RoxygenNote: 6.0.1
 Collate: 
     'internal.R'
-    'liveplot.R'
+    'mywidget.R'
     'package.R'
+    'realtime.R'
     'shiny.R'
     'zzz.R'

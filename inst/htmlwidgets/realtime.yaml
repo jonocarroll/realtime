@@ -1,5 +1,5 @@
 dependencies:
-  - name: liveplot
+  - name: realtime
     version: 0.5.11
     src: "htmlwidgets/lib/p5"
     script:

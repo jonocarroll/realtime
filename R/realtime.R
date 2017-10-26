@@ -22,21 +22,23 @@ NULL
 #'
 #' @examples
 #' \donttest{
-#' liveplot(function() rnorm(10), 10)
+#' realtime(function() rnorm(10), 10)
 #' }
 #'
 #' @export
-liveplot <- function(x, wait = 5, width = NULL, height = NULL, padding = 0) {
+realtime <- function(x, wait = 5,  padding = 0, width = NULL, height = NULL,
+                     elementId = NULL) {
   p <- htmlwidgets::createWidget(
-    "liveplot",
+    "realtime",
     structure(list(wait = wait)),
     width = width, height = height,
-    # sizingPolicy = htmlwidgets::sizingPolicy(
-    #   defaultWidth =  400,
-    #   defaultHeight = 400,
-    #   padding = padding,
-    #   browser.fill = FALSE
-    # ),
+    sizingPolicy = htmlwidgets::sizingPolicy(
+      defaultWidth =  400,
+      defaultHeight = 400,
+      padding = padding,
+      browser.fill = FALSE
+    ),
+    elementId = elementId,
     package = "realtime"
   )
   p
