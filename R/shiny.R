@@ -1,10 +1,10 @@
 #' @include internal.R
 NULL
 
-#' Wrapper functions for \code{liveplot} in \code{shiny}
+#' Wrapper functions for \code{realtime} in \code{shiny}
 #'
-#' Use \code{leafletOutput()} to create a UI element, and
-#'\code{renderLeaflet()} to render the widget.
+#' Use \code{realtimeOutput()} to create a UI element, and
+#'\code{realtimeLeaflet()} to render the widget.
 #'
 #' @param outputId \code{character} output variable to read from.
 #'
@@ -20,19 +20,19 @@ NULL
 #' @param quoted Is \code{expr} a quoted expression (with \code{quote()}).
 #'   This is useful if you want to save an expression in a variable.
 #'
-#' @name liveplotshiny
+#' @name realtimeshiny
 NULL
 
-#' @rdname liveplotshiny
+#' @rdname realtimeshiny
 #' @export
-liveplotOutput <- function(outputId, width = "100%", height = 400) {
-  htmlwidgets::shinyWidgetOutput(outputId, "liveplot", width, height,
-                                 "liveplot")
+realtimeOutput <- function(outputId, width = "100%", height = 400) {
+  htmlwidgets::shinyWidgetOutput(outputId, "realtime", width, height,
+                                 "realtime")
 }
 
-#' @rdname liveplotshiny
+#' @rdname realtimeshiny
 #' @export
-renderliveplot <- function(expr, env = parent.frame(), quoted = FALSE) {
+renderRealtime <- function(expr, env = parent.frame(), quoted = FALSE) {
  if (!quoted) expr = substitute(expr)  # force quoted
-  htmlwidgets::shinyRenderWidget(expr, liveplotOutput, env, quoted = TRUE)
+  htmlwidgets::shinyRenderWidget(expr, realtimeOutput, env, quoted = TRUE)
 }
