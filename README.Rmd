@@ -21,6 +21,10 @@ knitr::opts_chunk$set(fig.path = "man/figures/README-", fig.align = "center")
 The _realtime R_ package can generate real time data visualizations. As an example, let's monitor the sentiment of the _#auspol_ twitter community--in real time. To do this, we will need to install the _rtweet_ and _sentimentr R_ packages. Also, you will need to create a `.Renviron` file in home directory that contains your twitter access keys. For more information on setting up twitter access, see the [_rtweet_ vignette](http://rtweet.info/articles/auth.html).
 
 ```{r, eval = FALSE}
+# load package
+library(realtime)
+
+# create real time plot
 realtime(function() {
   # token registration
   token <- rtweet::create_token(

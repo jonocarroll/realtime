@@ -67,7 +67,11 @@
 <a href="#real-time-data-visualizations" class="anchor"></a>Real time data visualizations</h1></div>
 
 <p>The <em>realtime R</em> package can generate real time data visualizations. As an example, let’s monitor the sentiment of the <em>#auspol</em> twitter community–in real time. To do this, we will need to install the <em>rtweet</em> and <em>sentimentr R</em> packages. Also, you will need to create a <code>.Renviron</code> file in home directory that contains your twitter access keys. For more information on setting up twitter access, see the <a href="http://rtweet.info/articles/auth.html"><em>rtweet</em> vignette</a>.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="reference/realtime.html">realtime</a></span>(<span class="cf">function</span>() {
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># load package</span>
+<span class="kw">library</span>(realtime)
+
+<span class="co"># create real time plot</span>
+<span class="kw"><a href="reference/realtime.html">realtime</a></span>(<span class="cf">function</span>() {
   <span class="co"># token registration</span>
   token &lt;-<span class="st"> </span>rtweet<span class="op">::</span><span class="kw">create_token</span>(
     <span class="dt">app =</span> <span class="kw">Sys.getenv</span>(<span class="st">"TWITTER_APP_NAME"</span>),

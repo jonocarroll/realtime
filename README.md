@@ -8,6 +8,10 @@ Real time data visualizations
 The *realtime R* package can generate real time data visualizations. As an example, let's monitor the sentiment of the *\#auspol* twitter community--in real time. To do this, we will need to install the *rtweet* and *sentimentr R* packages. Also, you will need to create a `.Renviron` file in home directory that contains your twitter access keys. For more information on setting up twitter access, see the [*rtweet* vignette](http://rtweet.info/articles/auth.html).
 
 ``` r
+# load package
+library(realtime)
+
+# create real time plot
 realtime(function() {
   # token registration
   token <- rtweet::create_token(
