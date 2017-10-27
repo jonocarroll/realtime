@@ -5,13 +5,11 @@ HTMLWidgets.widget({
     /* initialize web socket */
     var raw;
     var ws = new WebSocket("ws://0.0.0.0:9454");
-    // console.log(ws);
     ws.onmessage = function(msg ) {
        raw = msg;
        ws.send("ping");
      };
     window.setTimeout(function() {
-      console.log('start');
       ws.send('ping');
     }, 500);
     // set up timings
@@ -41,7 +39,6 @@ HTMLWidgets.widget({
             }
             /* get new data from R */
             var new_data = raw.data;
-            console.log(new_data);
             /* get current time */
             var raw_ds = new Date(Date.now());
             var ds = raw_ds.toLocaleDateString() + "\n" +
@@ -133,7 +130,6 @@ HTMLWidgets.widget({
       resize: function(width, height) {
 
         // TODO: code to re-render the widget with a new size
-
 
       }
     };

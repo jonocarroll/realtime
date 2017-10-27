@@ -2,7 +2,9 @@
 #'
 #' Turn a function into an API service.
 #'
-#' @param x \code{function} for fetching and process data.
+#' @param x \code{function} for generating data.
+#'
+#' @details Argument to \code{x} must return a single number.
 #'
 #' @return invisible \code{TRUE}.
 #'
@@ -10,23 +12,18 @@
 #' # create an API that returns a random number
 #' api(function() rnorm(1))
 #'
-#' # generate a random number
-#'
 #' @noRd
-api <- function(x, wait = 0) {
+api <- function(x) {
   # validate inputs
   assertthat::assert_that(is.function(x), assertthat::is.scalar(x()),
                           assertthat::is.count(wait) || identical(wait, 0))
   # create api service
-  x = function() rnorm(1)
-  wait = 0
   s <- list(
     call = function(req) {
       stop("not implemented.")
     },
     onWSOpen = function(ws) {
       ws$onMessage(function(binary, message) {
-        Sys.sleep(wait)
         if (message != "exit") {
           ws$send(x())
         } else {
@@ -37,7 +34,7 @@ api <- function(x, wait = 0) {
   )
   # save data
   path <- tempfile(fileext = ".rda")
-  save(s, x, wait, file = path, envir = environment())
+  save(s, x, file = path, envir = environment())
   # create service
   cmd <- paste0("load('", path, "');",
                 "httpuv::runServer('0.0.0.0', 9454, s, 250)")

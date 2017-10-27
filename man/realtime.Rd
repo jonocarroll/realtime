@@ -7,14 +7,10 @@
 \alias{realtime}
 \title{realtime}
 \usage{
-realtime(x, wait = 5, padding = 0, width = NULL, height = NULL,
-  elementId = NULL)
+realtime(x, padding = 0, width = NULL, height = NULL, elementId = NULL)
 }
 \arguments{
 \item{x}{\code{function} for fetching and process data.}
-
-\item{wait}{\code{numeric} number of seconds to wait between plot
-update.}
 
 \item{padding}{\code{numeric} the padding of the plot.}
 
@@ -34,7 +30,7 @@ The argument to \code{x} should be a function that returns
 }
 \examples{
 \donttest{
-realtime(function() rnorm(1), 10)
+realtime(function() rnorm(1, mean = 5), 10)
 }
 
 }

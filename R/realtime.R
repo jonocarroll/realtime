@@ -7,9 +7,6 @@ NULL
 #'
 #' @param x \code{function} for fetching and process data.
 #'
-#' @param wait \code{numeric} number of seconds to wait between plot
-#'   update.
-#'
 #' @param width \code{numeric} the width of the plot.
 #'
 #' @param height \code{numeric} the height of the plot.
@@ -22,11 +19,11 @@ NULL
 #'
 #' @examples
 #' \donttest{
-#' realtime(function() rnorm(1), 10)
+#' realtime(function() rnorm(1, mean = 5), 10)
 #' }
 #'
 #' @export
-realtime <- function(x, wait = 5,  padding = 0, width = NULL, height = NULL,
+realtime <- function(x, padding = 0, width = NULL, height = NULL,
                      elementId = NULL) {
   # validate inputs
   assertthat::assert_that(is.function(x), assertthat::is.scalar(x()),
@@ -36,7 +33,7 @@ realtime <- function(x, wait = 5,  padding = 0, width = NULL, height = NULL,
                           assertthat::is.string(elementId) ||
                             is.null(elementId))
   # set up R process to serve data
-  api(x, wait = wait)
+  api(x)
   # create html widget
   p <- htmlwidgets::createWidget(
     "realtime",
