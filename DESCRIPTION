@@ -22,7 +22,6 @@ Imports:
     methods,
     assertthat,
     htmlwidgets,
-    p5,
     glue
 Suggests:
     testthat,
