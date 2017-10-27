@@ -14,7 +14,8 @@ add_data_stream <- function(sketch, location) {
         p.beginShape();
         for (i = 0; i < data_stream.length; i++) {{
            p.stroke(0);
-           p.vertex(i + 50, p.map(data_stream[i], 0, 255, {sketch$height} - 50, 50) );
+           //p.vertex(i + 50, p.map(data_stream[i], 0, 255, {sketch$height} - 50, 50) );
+           p.vertex(i + 50, {sketch$height} - 50 - data_stream[i])
         }}
         p.endShape();
     ')

@@ -78,7 +78,7 @@ app <- list(
   onWSOpen = function(ws) {
     id = 1
     while(TRUE){
-      x = as.numeric(fromBTC(1, antiddos = 0.1))-5700 %>% round(5)
+      x = (as.numeric(fromBTC(1, antiddos = 0.1))-5750) + runif(1, -10, 10)
       #x=3
       print(x)
       ws$send(toJSON(list(x = x)))
@@ -90,6 +90,38 @@ app <- list(
 
 #liveplot()
 runServer("0.0.0.0", 9454, app, 250)
+
+###
+
+library(realtime)
+library(httpuv)
+library(jsonlite)
+realtime(w = 600, h = 500) %>%
+    theme_grey() %>%
+    add_data_stream('ws://localhost:9454/') 
+
+# https://qrng.anu.edu.au/ran_hex.php
+
+app <- list(
+  call = function(req) {
+    stop("call is not implemented. Something is wrong if you see this")
+  },
+  onWSOpen = function(ws) {
+    id = 1
+    while(TRUE){
+      x = strtoi(rvest::html_text(httr::content(httr::GET("https://qrng.anu.edu.au/ran_bin.php"))), 2L)
+      #x=3
+      print(x)
+      ws$send(toJSON(list(x = x)))
+      Sys.sleep(0.01)
+      id = id+1
+    }
+  }
+)
+
+#liveplot()
+runServer("0.0.0.0", 9454, app, 250)
+
 ```
 
 TODO:

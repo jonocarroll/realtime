@@ -91,8 +91,8 @@ theme_grey <- function(sketch) {
     #     p.rect(50, 50, 100, 100);
     # }'
     sketch <- arbitrary_prototype(sketch, "setup", 'p.background(\'#ebebeb\');')
-    sketch <- arbitrary_prototype(sketch, "between", grid_js)
-    sketch <- arbitrary_prototype(sketch, "draw", glue::glue('grid({sketch$width}, {sketch$height});'))
+    sketch <- arbitrary_prototype(sketch, "pre", grid_js)
+    sketch <- arbitrary_prototype(sketch, "setup", glue::glue('grid({sketch$width}, {sketch$height});'))
     sketch
 }
 
@@ -173,8 +173,8 @@ theme_bw <- function(sketch) {
     #     p.rect(50, 50, 100, 100);
     # }'
     sketch <- arbitrary_prototype(sketch, "setup", 'p.background(\'#ffffff\');')
-    sketch <- arbitrary_prototype(sketch, "between", grid_js)
-    sketch <- arbitrary_prototype(sketch, "draw", glue::glue('grid({sketch$width}, {sketch$height});'))
+    sketch <- arbitrary_prototype(sketch, "pre", grid_js)
+    sketch <- arbitrary_prototype(sketch, "setup", glue::glue('grid({sketch$width}, {sketch$height});'))
     sketch
 }
 
