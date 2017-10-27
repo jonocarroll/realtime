@@ -1,7 +1,7 @@
 Package: realtime
 Type: Package
 Version: 0.0.0.1
-Title: Real time data visaulization
+Title: Real time data visualization
 Description: Create real time data visualizations.
 Authors@R: c(person(c('Richard','Beare'), email='Richard.Beare@monash.edu',
                     role=c('aut')),
@@ -35,7 +35,6 @@ VignetteBuilder: knitr
 RoxygenNote: 6.0.1
 Collate:
     'internal.R'
-    'mywidget.R'
     'package.R'
     'realtime.R'
     'shiny.R'

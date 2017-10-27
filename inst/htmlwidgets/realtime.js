@@ -3,23 +3,20 @@ HTMLWidgets.widget({
   type: "output",
   factory: function(el, width, height) {
     /* initialize web socket */
-    var raw = 0;
+    var raw;
     var ws = new WebSocket("ws://0.0.0.0:9454");
-    ws.onmessage = function(msg) {raw = msg;};
-    window.addEventListener("beforeunload", function(e){
-      ws.send("close");
-    }, false);
-    // create function to extract data
-    var get_data = function() {
-      // ws.send("ping");
-      // raw.data;
-      return Math.random();
-    };
+    // console.log(ws);
+    ws.onmessage = function(msg ) {
+       raw = msg;
+       ws.send("ping");
+     };
+    window.setTimeout(function() {
+      console.log('start');
+      ws.send('ping');
+    }, 500);
     // set up timings
     var d1 = Date.now();
-    var tmp = get_data();
-    var d2 = Date.now();
-    var difftime = (d2 - d1) + 1;
+    var difftime = 1;
 
     // create return htmlwidget factory
     return {
@@ -39,10 +36,12 @@ HTMLWidgets.widget({
             /* initialize variables */
             var w = p.canvas.width, h = p.canvas.height;
             var gridwidth = 100;
-
+            if (!raw) {
+              return;
+            }
             /* get new data from R */
-            var new_data = get_data();
-
+            var new_data = raw.data;
+            console.log(new_data);
             /* get current time */
             var raw_ds = new Date(Date.now());
             var ds = raw_ds.toLocaleDateString() + "\n" +

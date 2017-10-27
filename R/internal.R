@@ -13,21 +13,20 @@
 #' # generate a random number
 #'
 #' @noRd
-api <- function(x) {
-  handle <- subprocess::spawn_process(R_binary(), c('--no-save'))
+api <- function(x, wait = 0) {
+  # validate inputs
+  assertthat::assert_that(is.function(x), assertthat::is.scalar(x()),
+                          assertthat::is.count(wait) || identical(wait, 0))
   # create api service
+  x = function() rnorm(1)
+  wait = 0
   s <- list(
     call = function(req) {
-      address <- ifelse(is.null(req$HTTP_HOST), req$SERVER_NAME, req$HTTP_HOST)
-      wsUrl <- paste0("\"", "ws://", address, "\"")
-      list(
-        status = 200L,
-        headers = list('Content-Type' = 'text/html'),
-        body = "realtime api"
-      )
+      stop("not implemented.")
     },
     onWSOpen = function(ws) {
       ws$onMessage(function(binary, message) {
+        Sys.sleep(wait)
         if (message != "exit") {
           ws$send(x())
         } else {
@@ -38,11 +37,11 @@ api <- function(x) {
   )
   # save data
   path <- tempfile(fileext = ".rda")
-  save(s, x, file = path)
+  save(s, x, wait, file = path, envir = environment())
   # create service
-  code <- paste0("load(\"", path,
-                 "\"); httpuv::runServer(\"0.0.0.0\", 9454, s, 250)\n\n")
-  subprocess::process_write(handle, code)
+  cmd <- paste0("load('", path, "');",
+                "httpuv::runServer('0.0.0.0', 9454, s, 250)")
+  handle <- subprocess::spawn_process(R_binary(), c("--no-save", "-e", cmd))
   # return
   invisible(TRUE)
 }

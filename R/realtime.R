@@ -36,7 +36,7 @@ realtime <- function(x, wait = 5,  padding = 0, width = NULL, height = NULL,
                           assertthat::is.string(elementId) ||
                             is.null(elementId))
   # set up R process to serve data
-  # api(x)
+  api(x, wait = wait)
   # create html widget
   p <- htmlwidgets::createWidget(
     "realtime",
