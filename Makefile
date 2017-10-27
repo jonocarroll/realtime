@@ -1,19 +1,11 @@
-all: clean initc data docs test check
+all: clean docs test check
 
 clean:
 	rm -rf man/*
-	rm -rf data/*
 	rm -rf docs/*
 	rm -rf inst/doc/*
 
-initc:
-	R --slave -e "Rcpp::compileAttributes()"
-	R --slave -e "tools::package_native_routine_registration_skeleton('.', 'src/init.c', character_only = FALSE)"
-
 docs: man readme vigns site
-
-data:
-	Rscript --slave inst/extdata/simulate_data.R
 
 man:
 	R --slave -e "devtools::document()"

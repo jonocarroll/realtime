@@ -19,8 +19,6 @@ HTMLWidgets.widget({
     // create return htmlwidget factory
     return {
       renderValue: function(x) {
-        console.log(x.ylab);
-
         // set global constants
         var y_data = [];
         var x_labels = []
@@ -54,10 +52,19 @@ HTMLWidgets.widget({
               x_labels.shift();
               start_x = start_x + 1;
             }
-            var curr_min = Math.min(...y_data);
-            var curr_max = Math.max(...y_data);
-            var axis_min = curr_min - ((curr_max - curr_min) * 0.1);
-            var axis_max = curr_max + ((curr_max - curr_min) * 0.1);
+            if (!x.ylim) {
+              var curr_min = Math.min(...y_data);
+              var curr_max = Math.max(...y_data);
+              var curr_pad = (curr_max - curr_min) * 0.1;
+              if (curr_pad < 1e-10) {
+                curr_pad = 0.01;
+              }
+              var axis_min = curr_min - curr_pad;
+              var axis_max = curr_max + curr_pad;
+            } else {
+              var axis_min = x.ylim[0];
+              var axis_max = x.ylim[1];
+            }
 
             // set background
             p.background("#ebebeb");
@@ -122,8 +129,11 @@ HTMLWidgets.widget({
             p.beginShape();
             for (i = 0; i < y_data.length; i++) {
               p.stroke(0);
-              p.vertex(i + padding, p.map(y_data[i], axis_min, axis_max,
-                                          height - padding, 0));
+              p.vertex(i + padding, height - padding - p.map(y_data[i],
+                                                             axis_min,
+                                                             axis_max,
+                                                             0,
+                                                             height - padding));
             }
             p.endShape();
           };

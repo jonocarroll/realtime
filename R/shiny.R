@@ -34,5 +34,5 @@ liveplotOutput <- function(outputId, width = "100%", height = 400) {
 #' @export
 renderliveplot <- function(expr, env = parent.frame(), quoted = FALSE) {
  if (!quoted) expr = substitute(expr)  # force quoted
-  htmlwidgets::shinyRenderWidget(expr, leafletOutput, env, quoted = TRUE)
+  htmlwidgets::shinyRenderWidget(expr, liveplotOutput, env, quoted = TRUE)
 }

@@ -7,19 +7,23 @@
 \alias{realtime}
 \title{realtime}
 \usage{
-realtime(x, title = "Real time data", padding = 0, width = NULL,
-  height = NULL, elementId = NULL)
+realtime(x, title = "Real time data", ylim = NULL, padding = 0,
+  width = NULL, height = NULL, elementId = NULL)
 }
 \arguments{
 \item{x}{\code{function} for fetching and process data.}
 
 \item{title}{\code{character} title for the plot.}
 
+\item{ylim}{\code{numeric} range for y-axis.}
+
 \item{padding}{\code{numeric} the padding of the plot.}
 
 \item{width}{\code{numeric} the width of the plot.}
 
 \item{height}{\code{numeric} the height of the plot.}
+
+\item{elementId}{\code{character} HTML element identifier.}
 }
 \description{
 \emph{realtime} is an R package for creating data visualizations.
@@ -33,7 +37,7 @@ The argument to \code{x} should be a function that returns
 }
 \examples{
 \donttest{
-realtime(function() rnorm(1, mean = 5))
+realtime(function() rnorm(1, mean = 5), "Random numbers")
 }
 
 }
