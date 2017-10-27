@@ -19,6 +19,8 @@ HTMLWidgets.widget({
     // create return htmlwidget factory
     return {
       renderValue: function(x) {
+        console.log(x.ylab);
+
         // set global constants
         var y_data = [];
         var x_labels = []
@@ -112,7 +114,9 @@ HTMLWidgets.widget({
             }
 
             // draw the axis label
-            p.text("LABEL", padding + (width - padding) / 2, h - 10);
+            p.textSize(20)
+            p.textFont("Arial");
+            p.text(x.title, padding + ((width - padding) / 2), 20);
 
             /* add data */
             p.beginShape();
