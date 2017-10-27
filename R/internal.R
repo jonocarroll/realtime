@@ -15,8 +15,7 @@
 #' @noRd
 api <- function(x) {
   # validate inputs
-  assertthat::assert_that(is.function(x), assertthat::is.scalar(x()),
-                          assertthat::is.count(wait) || identical(wait, 0))
+  assertthat::assert_that(is.function(x), assertthat::is.scalar(x()))
   # create api service
   s <- list(
     call = function(req) {
