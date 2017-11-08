@@ -5,8 +5,10 @@ date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
 vignette: >
   %\VignetteIndexEntry{Vignette Title}
-  %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
+  %\VignetteEngine{knitr::rmarkdown}
+editor_options: 
+  chunk_output_type: console
 ---
 
 This year's [rOpenSci ozunconf](http://ozunconf17.ropensci.org/) was held in Melbourne, bringing together over N R enthusiasts from around the country and beyond. As is customary, ideas for projects were discussed in [GitHub Issues](https://github.com/ropensci/ozunconf17/issues) (41 of them by the time the unconf rolled around!) and there was no shortage of enthusiasm, interesting concepts, and varied experience.
@@ -55,12 +57,16 @@ Others formalised the code so that it can be piped into different 'themes', and 
 
 These were still toy examples of course, but they highlight what's possible. They were each constructed using an offshoot of the `p5` package whereby the `javascript` is re-written to include various features each time the plot is generated.
 
-Another route to take is to use the direct `javascript` binding API with factory functions. This had less flexibility in terms of adding modular components, but meant that the `javascript` could be modified without worrying about how it needed to interact with `p5` so much. This resulted in some outstanding features such as side-scrolling
+Another route to take is to use the direct `javascript` binding API with factory functions. This had less flexibility in terms of adding modular components, but meant that the `javascript` could be modified without worrying about how it needed to interact with `p5` so much. This resulted in some outstanding features such as side-scrolling and date-time stamps
 
-![]()
+**ADD GIF**
 
+Overall I was amazed at the progress we made over just two days. Starting from a silly idea/demo, we built a package which can plot realtime data, and can even serve up some data to be plotted. I have no expectations that this will be the way of the future, but it's been a fantastic learning experience for me (and hopefully others too). It's highlighted that there's ways to achieve realtime plots, even if we've used a library built for drawing rather than one built for plotting per se. 
 
+It's even inspired an offshoot using `leaflet` as the canvas, in the form of [tRainspotting](https://github.com/ropenscilabs/tRainspotting)
 
+![](img/tRainspotting.png)
 
+I had a great time at the unconf, and I can't wait until the next one. My hand will be going up to help out, attend, and help start something new.
 
-`realtime` developers: by Richard Beare, Jonathan Carroll, Kim Fitter, Charles Gray, Jeffrey O Hanson, Yan Holtz, Jackson Kwok, Miles McBain.
+My thanks and congratulations go out to each of the `realtime` developers: Richard Beare, Jonathan Carroll, Kim Fitter, Charles Gray, Jeffrey O Hanson, Yan Holtz, Jackson Kwok, Miles McBain and the entire cohort of 2017 rOpenSci ozunconf attendees. In particular, my thanks go to the organisers of such a wonderful event; Nick Tierney, Jessie Roberts, Di Cook, and Stefanie Butland.
