@@ -4,6 +4,8 @@ author: "Jonathan Carroll"
 date: "26/10/2017"
 output:
   html_document: default
+editor_options: 
+  chunk_output_type: console
 ---
 
 ```{r setup, include=FALSE}
@@ -27,7 +29,7 @@ realtime(w = 600, h = 500) %>%
 realtime(w = 600, h = 500) %>%
     theme_bw() %>%
     fill("#000000") %>%
-    rect(100, 100, 100, 100)
+    rect(100, 120, 100, 100)
 
 ## link to a stream coming from a websocket
 realtime(w = 600, h = 500) %>%
@@ -46,7 +48,7 @@ app <- list(
     id = 1
     while(TRUE){
       x = rnorm(1, 150, 50)
-      # print(x)
+      print(x)
       ws$send(toJSON(list(x = x)))
       Sys.sleep(0.02)
       id = id+1
@@ -78,7 +80,7 @@ app <- list(
   onWSOpen = function(ws) {
     id = 1
     while(TRUE){
-      x = (as.numeric(fromBTC(1, antiddos = 0.1))-5750) + runif(1, -10, 10)
+      x = (as.numeric(fromBTC(1, antiddos = 0.1))-7250) + runif(1, -10, 10)
       #x=3
       print(x)
       ws$send(toJSON(list(x = x)))
