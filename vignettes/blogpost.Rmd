@@ -67,6 +67,11 @@ It's even inspired an offshoot using `leaflet` as the canvas, in the form of [tR
 
 ![](img/tRainspotting.png)
 
+and [another one](https://github.com/kcf-jackson/jsReact/) that explores the interaction between R and Javascript
+
+![](https://github.com/kcf-jackson/jsReact/raw/master/inst/example_5.gif){width=70%}
+![](https://github.com/kcf-jackson/jsReact/raw/master/inst/example_6.gif){width=70%}
+
 I had a great time at the unconf, and I can't wait until the next one. My hand will be going up to help out, attend, and help start something new.
 
-My thanks and congratulations go out to each of the `realtime` developers: Richard Beare, Jonathan Carroll, Kim Fitter, Charles Gray, Jeffrey O Hanson, Yan Holtz, Jackson Kwok, Miles McBain and the entire cohort of 2017 rOpenSci ozunconf attendees. In particular, my thanks go to the organisers of such a wonderful event; Nick Tierney, Jessie Roberts, Di Cook, and Stefanie Butland.
+My thanks and congratulations go out to each of the [`realtime`](https://github.com/ropenscilabs/realtime) developers: [Richard Beare](https://github.com/richardbeare), [Jonathan Carroll](https://github.com/jonocarroll), [Kim Fitter](https://github.com/kimnewzealand), [Charles Gray](https://github.com/softloud), [Jeffrey O Hanson](https://github.com/jeffreyhanson), [Yan Holtz](https://github.com/holtzy), [Jackson Kwok](https://github.com/kcf-jackson), [Miles McBain](http://github.com/MilesMcBain) and the entire cohort of [2017 rOpenSci ozunconf attendees](http://ozunconf17.ropensci.org). In particular, my thanks go to the organisers of such a wonderful event; [Nick Tierney](http://github.com/njtierney), [Jessie Roberts](http://github.com/jesse-jesse), [Di Cook](http://github.com/dicook), and [Stefanie Butland](https://github.com/stefaniebutland).
