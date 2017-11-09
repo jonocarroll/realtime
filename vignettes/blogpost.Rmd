@@ -17,13 +17,15 @@ I've been to a few unconfs now and I treasure the time I get to spend with new p
 
 When the call for nominations came around this year it was an easy decision. I don't have employer support to attend these things so I take time off work and pay my own way. This is my networking time, my development time, and my skill-building time. I wasn't sure what sort of project I'd be interested in but I had no doubts something would come up that sounded interesting. 
 
-As it happened, I had been playing around with a bit of code, purely out of interest and hoping to learn how [`htmlwidgets`](https://www.htmlwidgets.org/) work. The idea was to make a classic graphic equaliser visualisation like this, in R:
+As it happened, I had been playing around with a bit of code, purely out of interest and hoping to learn how [`htmlwidgets`](https://www.htmlwidgets.org/) work. The idea was to make a classic graphic equaliser visualisation like this
 
 ![](img/graphiceq.gif)
 
+using R.
+
 This presents several challenges; how can I get live audio into R, and how fast can I plot the signal? I had doubts about both parts, partly because of the way that R calls tie up the session ([for now...](https://appsilondatascience.com/blog/rstats/2017/11/01/r-promises-hands-on.html)) and partly because constructing a `ggplot2` object (without starting anything; it would be) is somewhat slow (in terms of raw audio speeds). I'd heard about `htmlwidgets` and thought there must be a way to leverage that towards my goal.
 
-I searched for a graphic equaliser javascript library to work with and didn't find much that aligned with what I had in my head. Eventually I stumbled on [`p5.js`](https://p5js.org/) and its examples page which has an [audio-input plot with a live demo](https://p5js.org/examples/sound-frequency-spectrum.html). It's a frequency spectrum, but I figured that's just a bit of binning away from what I need. Running the example there looks like this:
+I searched for a graphic equaliser javascript library to work with and didn't find much that aligned with what I had in my head. Eventually I stumbled on [`p5.js`](https://p5js.org/) and its examples page which has an [audio-input plot with a live demo](https://p5js.org/examples/sound-frequency-spectrum.html). It's a frequency spectrum, but I figured that's just a bit of binning away from what I need. Running the example there looks like
 
 ![](img/p5sound_optimised.gif)
 
@@ -47,7 +49,7 @@ With the core goal well underway, people started branching out into aspects they
 
 ![](img/realtime_btc_optimised.gif)
 
-and a live-stream of binary-encoded data from [Australian National University(ANU) Quantum Random Numbers Server](http://qrng.anu.edu.au/index.php)
+and a live-stream of binary-encoded data from the [Australian National University (ANU) Quantum Random Numbers Server](http://qrng.anu.edu.au/index.php)
 
 ![](img/realtime_bin_optimised.gif)
 
@@ -65,11 +67,11 @@ The example we ended up with reads the live-feed of Twitter posts under a given 
 
 Overall I was amazed at the progress we made over just two days. Starting from a silly idea/demo, we built a package which can plot realtime data, and can even serve up some data to be plotted. I have no expectations that this will be the way of the future, but it's been a fantastic learning experience for me (and hopefully others too). It's highlighted that there's ways to achieve realtime plots, even if we've used a library built for drawing rather than one built for plotting per se. 
 
-It's even inspired an offshoot using `leaflet` as the canvas, in the form of an R package [tRainspotting](https://github.com/ropenscilabs/tRainspotting):
+It's even inspired an offshoot using `leaflet` as the canvas, in the form of R packages [tRainspotting](https://github.com/ropenscilabs/tRainspotting) which shows realtime data on New South Wales public transport:
 
 ![](img/tRainspotting.png)
 
-and a [gif](https://github.com/kcf-jackson/jsReact/) that explores the interaction between R and Javascript:
+[and jsReact](https://github.com/kcf-jackson/jsReact/) which explores the interaction between R and Javascript:
 
 ![](https://github.com/kcf-jackson/jsReact/raw/master/inst/example_5.gif)
 
