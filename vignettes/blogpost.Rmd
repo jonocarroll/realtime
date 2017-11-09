@@ -57,9 +57,9 @@ Others formalised the code so that it can be piped into different 'themes', and 
 
 These were still toy examples of course, but they highlight what's possible. They were each constructed using an offshoot of the `p5` package whereby the `javascript` is re-written to include various features each time the plot is generated.
 
-Another route to take is to use the direct `javascript` binding API with factory functions. This had less flexibility in terms of adding modular components, but meant that the `javascript` could be modified without worrying about how it needed to interact with `p5` so much. This resulted in some outstanding features such as side-scrolling and date-time stamps
+Another route to take is to use the direct `javascript` binding API with factory functions. This had less flexibility in terms of adding modular components, but meant that the `javascript` could be modified without worrying about how it needed to interact with `p5` so much. This resulted in some outstanding features such as side-scrolling and date-time stamps. The example we ended up with reads the live-feed of Twitter posts under a given hashtag, computes a sentiment analysis on the words, and live-plots the result
 
-**ADD GIF**
+![](img/auspol.gif)
 
 Overall I was amazed at the progress we made over just two days. Starting from a silly idea/demo, we built a package which can plot realtime data, and can even serve up some data to be plotted. I have no expectations that this will be the way of the future, but it's been a fantastic learning experience for me (and hopefully others too). It's highlighted that there's ways to achieve realtime plots, even if we've used a library built for drawing rather than one built for plotting per se. 
 
