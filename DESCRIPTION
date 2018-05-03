@@ -32,8 +32,8 @@ Depends:
     R(>= 3.3.2)
 License: GPL-3
 LazyData: true
-URL: https://github.com/ropensci/realtime
-BugReports: https://github.com/ropensci/realtime/issues
+URL: https://github.com/ropenscilabs/realtime
+BugReports: https://github.com/ropenscilabs/realtime/issues
 VignetteBuilder: knitr
 RoxygenNote: 6.0.1
 Collate: 
