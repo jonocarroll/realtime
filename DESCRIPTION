@@ -3,19 +3,19 @@ Type: Package
 Version: 0.0.1.1
 Title: Realtime data visaulization
 Description: Create real time data visualizations.
-Authors@R: c(person(c('Richard','Beare'), email='Richard.Beare@monash.edu',
+Authors@R: c(person(given = 'Richard', family = 'Beare', email='Richard.Beare@monash.edu',
                     role=c('aut')),
-             person(c('Jonathan', 'Carroll'), email='rpkg@jcarroll.com.au',
+             person(given = 'Jonathan', family = 'Carroll', email='rpkg@jcarroll.com.au',
                     role=c('aut','cre')),
-             person(c('Kim'), 'Fitter', email='kimfitter@yahoo.com',
+             person(given = 'Kim', family = 'Fitter', email='kimfitter@yahoo.com',
                     role=c('aut')),
-             person(c('Charles','Gray'), email='c.gray@latrobe.edu.au',
+             person(given = 'Charles', family = 'Gray', email='c.gray@latrobe.edu.au',
                     role=c('aut')),
-             person(c('Jeffrey', 'O'), 'Hanson',
+             person(given = 'Jeffrey O', family = 'Hanson',
                     email='jeffrey.hanson@uqconnect.edu.au', role=c('aut')),
-             person(c('Yan','Holtz'), email='yan.holtz.data@gmail.com',
+             person(given = 'Yan', family = 'Holtz', email='yan.holtz.data@gmail.com',
                     role=c('aut')),
-             person(c('Jackson', 'Kwok'), email='kcf.jackson@gmail.com',
+             person(given = 'Jackson', family = 'Kwok', email='kcf.jackson@gmail.com',
                     role=c('aut')))
 Imports:
     utils,
